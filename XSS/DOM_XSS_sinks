@@ -1,0 +1,14 @@
+The sink is the potentially dangerous javascript function or DOM Object that can execute or render the data. 
+In DOM XSS, The data flow from the source to the sink ... 
+
+
+Some Example of sink in DOM XSS : 
+
+
+document.write()
+document.writeln()
+document.domain
+element.innerHTML
+element.outerHTML
+element.insertAdjacentHTML
+element.onevent
