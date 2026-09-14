@@ -1,0 +1,55 @@
+Reflected XSS into a Template Literal
+
+Lab: PortSwigger Web Security Academy
+Difficulty: Practitioner
+Type: Reflected XSS
+
+Vulnerability
+
+The blog search functionality reflected user-controlled input inside a JavaScript template literal.
+
+The application HTML-encoded <, >, single quotes, and double quotes, while backticks were escaped.
+
+Despite these restrictions, the input remained executable within the JavaScript context.
+
+Reconnaissance
+
+The important observation was that the reflection was occurring inside a JavaScript template literal rather than directly inside HTML.
+
+`user-controlled input`
+    <script>
+        var message = `0 search results for name`;
+        document.getElementById('searchMessage').innerText = message;
+    </script>
+
+Because of this, HTML encoding alone was not sufficient to prevent JavaScript execution.
+
+Exploitation
+
+The approach was to break out of the template literal's string context and inject JavaScript.
+
+${alert(1)};
+
+    <script>
+        var message = `0 search results for '${alert(1)}'`;
+        document.getElementById('searchMessage').innerText = message;
+    </script>
+
+
+This allowed the injected code to execute within the existing JavaScript context.
+
+Result
+
+The injected JavaScript successfully executed alert() inside the template literal, solving the lab.
+
+Root Cause
+
+User-controlled input was inserted into a JavaScript template literal without being safely handled for the JavaScript context.
+
+The application relied on HTML encoding, which does not provide adequate protection when untrusted data is placed inside JavaScript.
+
+Key Takeaway
+
+XSS defenses must account for the context in which the input is interpreted.
+
+HTML encoding can protect against certain HTML injection scenarios, but it does not make arbitrary data safe when it is inserted into JavaScript.

