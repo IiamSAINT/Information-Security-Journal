@@ -1,0 +1,9 @@
+Many application hide their cookie using the HttpOnly flag  ->  document.cookie might not work
+
+
+WAYS TO EXPLOIT XSS -> 
+
+alert 
+displaying the cookie with document.cookie 
+displaying the password/ sending password to your server ( the client has a password manager that performs password autofill)
+Exploiting XSS to bypass CSRF protections 
