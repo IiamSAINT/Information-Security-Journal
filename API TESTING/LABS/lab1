@@ -1,0 +1,25 @@
+
+
+FINDING AND EXPLOITING AN UNUSED API ENDPOINT 
+
+
+To solve the lab, exploit a hidden API endpoint to buy a Lightweight l33t Leather Jacket.
+
+
+Firstly , I had to do a little clicking around while inspecting the HTTP History on Burp suite , which led me to an endpoint 
+
+GET /api/products/1/price 
+
+This was an HTTP request that tries to get the proce for product 1 from the server , since my target was the price on Product 1 , it seemed like this was my guy. 
+
+I went further to probe the enpoint , i changed the request to OPTIONS , this revealed the allow-list ( GET, PATCH ), I changed the request to a PATCH request , then i got a content-type error , this is pretty common because several HTTTP request usually require different types of Content-Type and considering the previous GET request was a different operation to the PATCH request , I had to change the body of the request to match the PATCH request.
+
+note : The PATCH request uses a similar HTTP request body to the POST request
+
+The request returned an error that specified the type of body parameters the server was expecting ( the price parameter). with all these finsings, i was able to successfully modify the price of PRODUCT 1 to 0 
+
+The body parameter : 
+
+{ 
+    "price" : 0 
+}
